@@ -24,7 +24,7 @@ const getBase = (pattern, cwd) => {
 // @description runs a task function or a registered task by name.
 // @param {TaskLike} item
 // @returns {Promise<void>}
-const run = async (item) => {
+const execute = async (item) => {
     if (typeof item === "string") {
         if (!tasks.has(item)) {
             throw new Error(`Task '${item}' not found`);
@@ -138,7 +138,7 @@ export const task = (name, fn) => {
 export const series = (...items) => {
     return async () => {
         for (const item of items) {
-            await run(item);
+            await execute(item);
         }
     };
 };
@@ -148,6 +148,6 @@ export const series = (...items) => {
 // @returns {Task}
 export const parallel = (...items) => {
     return async () => {
-        await Promise.all(items.map(run));
+        await Promise.all(items.map(execute));
     };
 };
