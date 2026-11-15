@@ -3,7 +3,7 @@
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
-import { tasks, series } from "./index.js";
+import { tasks, run } from "./index.js";
 
 const USAGE = `Usage: mukin [options] [task...]
 
@@ -45,7 +45,7 @@ const main = async () => {
     if (values.list) {
         return console.log([...tasks.keys()].join("\n"));
     }
-    await series(...(positionals.length > 0 ? positionals : ["default"]))();
+    await run(positionals);
 };
 
 main().catch((error) => {
