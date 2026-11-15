@@ -59,3 +59,6 @@ export const series: (...items: TaskLike[]) => Task;
 
 // Creates a task that runs the given tasks at the same time.
 export const parallel: (...items: TaskLike[]) => Task;
+
+// run the given registered tasks
+export const run: (...names?: string[]) => Promise<void>;
