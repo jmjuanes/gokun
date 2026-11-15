@@ -151,3 +151,12 @@ export const parallel = (...items) => {
         await Promise.all(items.map(execute));
     };
 };
+
+// @description runs the tasks with the given names, one after another.
+// If no task names are given, it runs the 'default' task.
+// Use the `--list` (or `-l`) flag to print the registered tasks instead.
+// @param {string[]} [args] Task names and flags. Default: `process.argv.slice(2)`.
+// @returns {Promise<void>}
+export const run = async (names = process.argv.slice(2)) => {
+    await series(...(names.length > 0 ? names : ["default"]))();
+};
