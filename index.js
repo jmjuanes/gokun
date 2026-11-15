@@ -24,7 +24,7 @@ const getBase = (pattern, cwd) => {
 // @description runs a task function or a registered task by name.
 // @param {TaskLike} item
 // @returns {Promise<void>}
-const run = async (item) => {
+const execute = async (item) => {
     if (typeof item === "string") {
         if (!tasks.has(item)) {
             throw new Error(`Task '${item}' not found`);
@@ -138,7 +138,7 @@ export const task = (name, fn) => {
 export const series = (...items) => {
     return async () => {
         for (const item of items) {
-            await run(item);
+            await execute(item);
         }
     };
 };
@@ -148,6 +148,15 @@ export const series = (...items) => {
 // @returns {Task}
 export const parallel = (...items) => {
     return async () => {
-        await Promise.all(items.map(run));
+        await Promise.all(items.map(execute));
     };
+};
+
+// @description runs the tasks with the given names, one after another.
+// If no task names are given, it runs the 'default' task.
+// Use the `--list` (or `-l`) flag to print the registered tasks instead.
+// @param {string[]} [args] Task names and flags. Default: `process.argv.slice(2)`.
+// @returns {Promise<void>}
+export const run = async (names = process.argv.slice(2)) => {
+    await series(...(names.length > 0 ? names : ["default"]))();
 };

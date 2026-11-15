@@ -3,7 +3,7 @@
 ![npm version](https://badgen.net/npm/v/mukin?labelColor=1d2734&color=21bf81)
 ![license](https://badgen.net/github/license/jmjuanes/mukin?labelColor=1d2734&color=21bf81)
 
-A Minimal, dependency-free task runner. Define your tasks in a plain JavaScript file, connect `src`, `each` and `dest` into pipelines, and run them with a single command. Files flow through native Node.js object streams one by one, so thousands of them can be processed without loading them all in memory.
+A minimal, dependency-free task runner. Define your tasks in a plain JavaScript file, connect `src`, `each` and `dest` into pipelines, and run them with the CLI or with plain `node`.
 
 ## Installation
 
@@ -55,11 +55,54 @@ npx mukin --list       # lists the available tasks
 | `-l`, `--list` | List the available tasks |
 | `-h`, `--help` | Show the help |
 
+### Running without the CLI
+
+You don't need the CLI. Put your tasks in any file, call `run()` at the end, and execute it with Node.js:
+
+```js
+// tasks.js
+import { src, dest, pipeline, task, series, run } from "mukin";
+
+task("build", () => pipeline(src("src/**/*"), dest("dist")));
+task("default", series("build"));
+
+await run();
+```
+
+```bash
+node tasks.js              # runs the "default" task
+node tasks.js build        # runs "build"
+node tasks.js pages assets # runs "pages", then "assets"
+```
+
+It plays well with `package.json` scripts and with Node.js built-in tools:
+
+```json
+{
+    "scripts": {
+        "build": "node tasks.js build"
+    }
+}
+```
+
 ## API
 
 ### `task(name, fn)`
 
 Registers a task. `fn` can be sync or async. If it returns a promise, or a stream, the task finishes when that promise or stream does. Always `return` it, otherwise `mukin` cannot wait for it.
+
+### `run([args])`
+
+Runs the tasks named in `args` and returns a promise that resolves when they finish. Use it as the last line of your tasks file when you run it with `node` instead of the CLI.
+
+- `args`: array of task names. Default: `process.argv.slice(2)`
+
+If `args` has no task names, the `default` task runs. If a task is missing or fails, the error is printed and `process.exitCode` is set to `1`, so your scripts and CI fail as expected.
+
+```js
+await run();                       // uses the command line arguments
+await run(["build", "assets"]);    // runs these tasks, ignoring the command line
+```
 
 ### `pipeline(...streams)`
 
