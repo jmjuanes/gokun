@@ -5,9 +5,9 @@ import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import { tasks, run } from "./index.js";
 
-const USAGE = `Usage: mukin [options] [task...]
+const USAGE = `Usage: gokun [options] [task...]
 
-Runs the tasks registered in a mukin.config.js file, one after another.
+Runs the tasks registered in a gokun.config.js file, one after another.
 If no task is given, the task named 'default' is run.
 
 Options:
@@ -24,7 +24,7 @@ const main = async () => {
             file: {
                 type: "string",
                 short: "f",
-                default: "mukin.config.js",
+                default: "gokun.config.js",
             },
             list: {
                 type: "boolean",
