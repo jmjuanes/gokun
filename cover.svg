@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-labelledby="gokun-title">
+    <title id="gokun-title">gokun</title>
+    <g transform="translate(288.77 33.22) scale(0.8904)">
+        <!-- Skewer -->
+        <rect x="77" y="2" width="6" height="146" rx="3" fill="#d08770" />
+        <!-- Green dango -->
+        <circle cx="80" cy="112" r="28" fill="#a3be8c" />
+        <path d="M54 118c4 14 14 22 26 22s22-8 26-22c-8 8-18 11-26 11s-18-3-26-11z" fill="#8fa876" />
+        <!-- White dango -->
+        <circle cx="80" cy="74" r="28" fill="#f6f1e7" />
+        <path d="M54 80c4 14 14 22 26 22s22-8 26-22c-8 8-18 11-26 11s-18-3-26-11z" fill="#e3dccb" />
+        <!-- Pink dango with face -->
+        <circle cx="80" cy="36" r="28" fill="#e8aeb7" />
+        <path d="M54 42c4 14 14 22 26 22s22-8 26-22c-8 8-18 11-26 11s-18-3-26-11z" fill="#d68e9a" />
+        <circle cx="69" cy="34" r="3.6" fill="#2e3440" />
+        <circle cx="91" cy="34" r="3.6" fill="#2e3440" />
+        <ellipse cx="62" cy="43" rx="4.5" ry="3" fill="#bf616a" opacity=".45" />
+        <ellipse cx="98" cy="43" rx="4.5" ry="3" fill="#bf616a" opacity=".45" />
+        <ellipse cx="80" cy="43" rx="3" ry="3.8" fill="#2e3440" />
+    </g>
+</svg>
