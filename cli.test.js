@@ -49,7 +49,7 @@ describe("cli", () => {
 
     before(async () => {
         root = await createFixture();
-        tasksFile = path.join(root, "gokun.config.js");
+        tasksFile = path.join(root, "gokunfile.js");
         await fs.writeFile(tasksFile, [
             `import { src, dest, pipeline, task, series } from ${JSON.stringify(indexUrl)};`,
             `const cwd = ${JSON.stringify(root)};`,
