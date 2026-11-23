@@ -1,3 +1,5 @@
+<p align="center"><img src="./gokun-cover.svg"></p>
+
 # gokun
 
 ![npm version](https://badgen.net/npm/v/gokun?labelColor=1d2734&color=21bf81)
