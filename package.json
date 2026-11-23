@@ -1,7 +1,7 @@
 {
     "name": "gokun",
     "description": "A tiny task runner built on native Node.js streams",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "type": "module",
     "author": {
         "name": "Josemi Juanes",
