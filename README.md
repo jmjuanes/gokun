@@ -1,4 +1,4 @@
-<p align="center"><img src="./gokun-cover.svg></p>
+<p align="center"><img src="./gokun-cover.svg"></p>
 
 # gokun
 
