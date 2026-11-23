@@ -7,7 +7,7 @@ import { tasks, run } from "./index.js";
 
 const USAGE = `Usage: gokun [options] [task...]
 
-Runs the tasks registered in a gokun.config.js file, one after another.
+Runs the tasks registered in a gokunfile.js file, one after another.
 If no task is given, the task named 'default' is run.
 
 Options:
@@ -24,7 +24,7 @@ const main = async () => {
             file: {
                 type: "string",
                 short: "f",
-                default: "gokun.config.js",
+                default: "gokunfile.js",
             },
             list: {
                 type: "boolean",

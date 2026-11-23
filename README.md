@@ -17,7 +17,7 @@ Requires Node.js 22 or later.
 
 ## Usage
 
-Create a `gokun.config.js` file in your project:
+Create a `gokunfile.js` file in your project:
 
 ```js
 import { src, dest, each, pipeline, task, series, parallel } from "gokun";
@@ -51,7 +51,7 @@ npx gokun --list       # lists the available tasks
 
 | Option | Description |
 | --- | --- |
-| `-f`, `--file <path>` | Tasks file to load. Default: `gokun.config.js` |
+| `-f`, `--file <path>` | Tasks file to load. Default: `gokunfile.js` |
 | `-l`, `--list` | List the available tasks |
 | `-h`, `--help` | Show the help |
 
