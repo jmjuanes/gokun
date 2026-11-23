@@ -1,5 +1,5 @@
 {
-    "name": "mukin",
+    "name": "gokun",
     "description": "A tiny task runner built on native Node.js streams",
     "version": "0.0.2",
     "type": "module",
@@ -8,8 +8,9 @@
         "email": "hello@josemi.xyz"
     },
     "license": "MIT",
-    "repository": "https://github.com/jmjuanes/mukin",
-    "bugs": "https://github.com/jmjuanes/mukin/issues",
+    "repository": "https://github.com/jmjuanes/gokun",
+    "bugs": "https://github.com/jmjuanes/gokun/issues",
+    "homepage": "https://josemi.xyz/gokun",
     "main": "index.js",
     "module": "index.js",
     "types": "index.d.ts",
@@ -19,7 +20,7 @@
         "./package.json": "./package.json"
     },
     "bin": {
-        "mukin": "cli.js"
+        "gokun": "cli.js"
     },
     "scripts": {
         "test": "node --test"
