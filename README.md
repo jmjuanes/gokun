@@ -1,7 +1,7 @@
-# mukin
+# gokun
 
-![npm version](https://badgen.net/npm/v/mukin?labelColor=1d2734&color=21bf81)
-![license](https://badgen.net/github/license/jmjuanes/mukin?labelColor=1d2734&color=21bf81)
+![npm version](https://badgen.net/npm/v/gokun?labelColor=1d2734&color=21bf81)
+![license](https://badgen.net/github/license/jmjuanes/gokun?labelColor=1d2734&color=21bf81)
 
 A minimal, dependency-free task runner. Define your tasks in a plain JavaScript file, connect `src`, `each` and `dest` into pipelines, and run them with the CLI or with plain `node`.
 
@@ -10,17 +10,17 @@ A minimal, dependency-free task runner. Define your tasks in a plain JavaScript 
 Install it locally in your project, so your tasks file and the CLI share the same copy of the library.
 
 ```bash
-npm install --save-dev mukin
+npm install --save-dev gokun
 ```
 
 Requires Node.js 22 or later.
 
 ## Usage
 
-Create a `mukin.config.js` file in your project:
+Create a `gokun.config.js` file in your project:
 
 ```js
-import { src, dest, each, pipeline, task, series, parallel } from "mukin";
+import { src, dest, each, pipeline, task, series, parallel } from "gokun";
 
 task("pages", () => {
     return pipeline(
@@ -41,17 +41,17 @@ task("default", series("build"));
 Then run it:
 
 ```bash
-npx mukin              # runs the "default" task
-npx mukin build        # runs "build"
-npx mukin pages assets # runs "pages", then "assets"
-npx mukin --list       # lists the available tasks
+npx gokun              # runs the "default" task
+npx gokun build        # runs "build"
+npx gokun pages assets # runs "pages", then "assets"
+npx gokun --list       # lists the available tasks
 ```
 
 ### CLI options
 
 | Option | Description |
 | --- | --- |
-| `-f`, `--file <path>` | Tasks file to load. Default: `mukin.config.js` |
+| `-f`, `--file <path>` | Tasks file to load. Default: `gokun.config.js` |
 | `-l`, `--list` | List the available tasks |
 | `-h`, `--help` | Show the help |
 
@@ -61,7 +61,7 @@ You don't need the CLI. Put your tasks in any file, call `run()` at the end, and
 
 ```js
 // tasks.js
-import { src, dest, pipeline, task, series, run } from "mukin";
+import { src, dest, pipeline, task, series, run } from "gokun";
 
 task("build", () => pipeline(src("src/**/*"), dest("dist")));
 task("default", series("build"));
@@ -89,7 +89,7 @@ It plays well with `package.json` scripts and with Node.js built-in tools:
 
 ### `task(name, fn)`
 
-Registers a task. `fn` can be sync or async. If it returns a promise, or a stream, the task finishes when that promise or stream does. Always `return` it, otherwise `mukin` cannot wait for it.
+Registers a task. `fn` can be sync or async. If it returns a promise, or a stream, the task finishes when that promise or stream does. Always `return` it, otherwise `gokun` cannot wait for it.
 
 ### `run([args])`
 
